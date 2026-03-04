@@ -2,31 +2,17 @@ package com;
 
 import java.util.Objects;
 
+/**
+ * Represents a song in the music player. Each song contains basic metadata such
+ * as ID, title, artist, and duration.
+ */
+
 public class Song {
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(artistName, duration, songId, songTitle);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Song other = (Song) obj;
-		return Objects.equals(artistName, other.artistName)
-				&& Double.doubleToLongBits(duration) == Double.doubleToLongBits(other.duration)
-				&& songId == other.songId && Objects.equals(songTitle, other.songTitle);
-	}
-
-	private int songId;
-	private String songTitle;
-	private String artistName;
-	private double duration;
+	private int songId; // Unique identifier for the song
+	private String songTitle; // Title of the song
+	private String artistName; // Artist who performed the song
+	private double duration; // Duration of the song in minutes
 
 	Song(int songId, String songTitle, String artistName, double duration) {
 
@@ -42,12 +28,6 @@ public class Song {
 
 	public void setSongId(int songId) {
 		this.songId = songId;
-	}
-
-	@Override
-	public String toString() {
-		return "Song [songId=" + songId + ", songTitle=" + songTitle + ", artistName=" + artistName + ", duration="
-				+ duration + "]";
 	}
 
 	public String getSongTitle() {
@@ -73,4 +53,28 @@ public class Song {
 	public void setArtistName(String artistName) {
 		this.artistName = artistName;
 	}
+
+	@Override
+	public String toString() {
+		return "Song [songId=" + songId + ", songTitle=" + songTitle + ", artistName=" + artistName + ", duration="
+				+ duration + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(songId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Song other = (Song) obj;
+		return songId == other.songId;
+	}
+
 }

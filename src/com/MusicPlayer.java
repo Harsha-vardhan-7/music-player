@@ -2,6 +2,12 @@ package com;
 
 import java.util.List;
 
+/**
+ * Defines the operations supported by the music player. This interface
+ * separates the contract from the implementation and demonstrates
+ * interface-driven design in Core Java.
+ */
+
 public interface MusicPlayer {
 
 	void addSong(Song song);
